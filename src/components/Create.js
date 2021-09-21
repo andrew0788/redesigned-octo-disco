@@ -1,25 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
 
-const Create =() => (
-
-  <form class="ui form">
-    <div class="field">
-      <label>First Name</label>
-      <input type="text" name="first-name" placeholder="First Name" />
-    </div>
-    <div class="field">
-      <label>Last Name</label>
-      <input type="text" name="last-name" placeholder="Last Name" />
-    </div>
-    <div class="field">
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" />
-        <label>I agree to the Terms and Conditions</label>
-      </div>
-    </div>
-    <button class="ui button" type="submit">Submit</button>
-  </form>
-)
-
-export default Create
+export default function Create(){
+  const [checkbox, setCheckbox]  = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName]  = useState('');
+  const postData = () => {
+    console.log(firstName);
+    console.log(lastName);
+    console.log(checkbox);
+  }
+  return(
+   <div>
+    <Form className='create-form'>
+      <Form.Field>
+        <label>First Name</label>
+        <input placeholder="First Name" onChange = {(e) => setFirstName(e.target.value)} />
+      </Form.Field>
+      <Form.Field>
+        <label>Last Name</label>
+        <input placeholder="Last Name" onChange = {(e) => setLastName(e.target.value)}/>
+      </Form.Field>
+      <Form.Field>
+        <Checkbox label="I agree to the Terms and Conditions" onChange = {(e) => setCheckbox(!checkbox)}/>
+      </Form.Field>
+      <Button onClick={postData} type="submit">Submit</Button>
+     </Form>
+   </div>
+ )
+} 

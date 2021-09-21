@@ -5,7 +5,10 @@ import Create from './components/Create'
 function App() {
   return (
     <div className="main">
-      <Create />
+      <h2 className="main-header">React Crud Operation</h2>
+      <div>
+        <Create />
+      </div>
     </div>
   );
 }
